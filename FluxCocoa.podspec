@@ -32,5 +32,5 @@ Pod::Spec.new do |s|
 
   s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation'
-  s.dependency 'ReactiveCocoa', '~> 2.4'
+  s.dependency 'ReactiveCocoa', '~> 2.3'
 end
