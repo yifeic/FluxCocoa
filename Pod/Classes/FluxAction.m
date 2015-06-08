@@ -21,15 +21,19 @@
     return [self actionWithBlock:nil];
 }
 
-+ (instancetype)actionWithBlock:(FluxActionBlock)block {
-    return [[self alloc] initWithBlock:block];
++ (instancetype)replayLastAction {
+    return [[self alloc] initWithBlock:nil replayLast:YES];
 }
 
-- (instancetype)initWithBlock:(FluxActionBlock)block
++ (instancetype)actionWithBlock:(FluxActionBlock)block {
+    return [[self alloc] initWithBlock:block replayLast:NO];
+}
+
+- (instancetype)initWithBlock:(FluxActionBlock)block replayLast:(BOOL)replayLast
 {
     self = [super init];
     if (self) {
-        _executionSignalSubject = [RACSubject subject];
+        _executionSignalSubject = replayLast ? [RACBehaviorSubject subject] : [RACSubject subject];
         _mapBlock = [block copy];
     }
     return self;

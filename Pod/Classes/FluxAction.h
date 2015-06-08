@@ -14,6 +14,7 @@ typedef id(^FluxActionBlock)(id input);
 @interface FluxAction : NSObject
 
 + (instancetype)action;
++ (instancetype)replayLastAction;
 + (instancetype)actionWithBlock:(FluxActionBlock)block;
 
 @property (nonatomic, readonly) RACSignal *executionSignal;
